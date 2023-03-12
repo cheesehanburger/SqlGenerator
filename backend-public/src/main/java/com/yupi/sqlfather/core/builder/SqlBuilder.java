@@ -67,6 +67,7 @@ public class SqlBuilder {
         String tableName = sqlDialect.wrapTableName(tableSchema.getTableName());
         String dbName = tableSchema.getDbName();
         if (StringUtils.isNotBlank(dbName)) {
+            // dbName.tableName格式
             tableName = String.format("%s.%s", dbName, tableName);
         }
         // 构造表前缀注释

@@ -40,7 +40,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 public class SqlController {
 
-    // 可视化表单接口
+    //可视化表单接口
     @PostMapping("/generate/schema")
     public BaseResponse<GenerateVO> generateBySchema(@RequestBody TableSchema tableSchema) {
         return ResultUtils.success(GeneratorFacade.generateAll(tableSchema));

@@ -61,6 +61,7 @@ public class TableSchemaBuilder {
      * @param content
      * @return
      */
+    // 将字段名转为TableSchema
     public static TableSchema buildFromAuto(String content) {
         if (StringUtils.isBlank(content)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -70,23 +71,27 @@ public class TableSchemaBuilder {
         if (ArrayUtils.isEmpty(words) || words.length > 20) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        // 根据单词去词库里匹配列信息，未匹配到的使用默认值
+        // 根据单词去词库里匹配列信息(name或者fieldName相同)，未匹配到的使用默认值
         QueryWrapper<FieldInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("name", Arrays.asList(words)).or().in("fieldName", Arrays.asList(words));
         List<FieldInfo> fieldInfoList = fieldInfoService.list(queryWrapper);
-        // 名称 => 字段信息
+
+        // 名称 => 字段信息（以name为键，字段信息为值）
         Map<String, List<FieldInfo>> nameFieldInfoMap = fieldInfoList.stream().collect(Collectors.groupingBy(FieldInfo::getName));
-        // 字段名称 => 字段信息
+        // 字段名称 => 字段信息（以Field为键，字段信息为值）
         Map<String, List<FieldInfo>> fieldNameFieldInfoMap = fieldInfoList.stream().collect(Collectors.groupingBy(FieldInfo::getFieldName));
+
         TableSchema tableSchema = new TableSchema();
         tableSchema.setTableName("my_table");
         tableSchema.setTableComment("自动生成的表");
         List<Field> fieldList = new ArrayList<>();
+        //将所有智能输入的字段进行比对
         for (String word : words) {
             Field field;
-            List<FieldInfo> infoList = Optional.ofNullable(nameFieldInfoMap.get(word))
-                    .orElse(fieldNameFieldInfoMap.get(word));
+            //将所有能在库中匹配得到的Name或者fieldName，计入字段信息表infoList
+            List<FieldInfo> infoList = Optional.ofNullable(nameFieldInfoMap.get(word)).orElse(fieldNameFieldInfoMap.get(word));
             if (CollectionUtils.isNotEmpty(infoList)) {
+                //将字段信息表的第一个字段信息（json形式）转化为类
                 field = GSON.fromJson(infoList.get(0).getContent(), Field.class);
             } else {
                 // 未匹配到的使用默认值
@@ -104,17 +109,18 @@ public class TableSchemaBuilder {
      * @param sql 建表 SQL
      * @return 生成的 TableSchema
      */
+    //将sql语句解析为TableSchema
     public static TableSchema buildFromSql(String sql) {
         if (StringUtils.isBlank(sql)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         try {
-            // 解析 SQL
+            //解析 SQL
             MySqlCreateTableParser parser = new MySqlCreateTableParser(sql);
             SQLCreateTableStatement sqlCreateTableStatement = parser.parseCreateTable();
             TableSchema tableSchema = new TableSchema();
             tableSchema.setDbName(sqlCreateTableStatement.getSchema());
-            tableSchema.setTableName(sqlDialect.parseTableName(sqlCreateTableStatement.getTableName()));
+            tableSchema.setTableName(sqlDialect.parseTableName(sqlCreateTableStatement.getTableName()));    // `user`=>user
             String tableComment = null;
             if (sqlCreateTableStatement.getComment() != null) {
                 tableComment = sqlCreateTableStatement.getComment().toString();
@@ -126,6 +132,7 @@ public class TableSchemaBuilder {
             List<Field> fieldList = new ArrayList<>();
             // 解析列
             for (SQLTableElement sqlTableElement : sqlCreateTableStatement.getTableElementList()) {
+
                 // 主键约束
                 if (sqlTableElement instanceof SQLPrimaryKey) {
                     SQLPrimaryKey sqlPrimaryKey = (SQLPrimaryKey) sqlTableElement;
@@ -182,13 +189,14 @@ public class TableSchemaBuilder {
      */
     public static TableSchema buildFromExcel(MultipartFile file) {
         try {
+            //将excle数据转为[{0=value,1=value},{0=value,1=value}]类型的list
             List<Map<Integer, String>> dataList = EasyExcel.read(file.getInputStream()).sheet().headRowNumber(0).doReadSync();
             if (CollectionUtils.isEmpty(dataList)) {
                 throw new BusinessException(ErrorCode.PARAMS_ERROR, "表格无数据");
             }
             // 第一行为表头
-            Map<Integer, String> map = dataList.get(0);
-            List<Field> fieldList = map.values().stream().map(name -> {
+            Map<Integer, String> titleMap = dataList.get(0);
+            List<Field> fieldList = titleMap.values().stream().map(name -> {
                 Field field = new Field();
                 field.setFieldName(name);
                 field.setComment(name);
