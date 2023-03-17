@@ -53,12 +53,13 @@ public class JavaCodeBuilder {
         JavaEntityGenerateDTO javaEntityGenerateDTO = new JavaEntityGenerateDTO();
         String tableName = tableSchema.getTableName();
         String tableComment = tableSchema.getTableComment();
+        // 将下划线表名转化为首字母大写的驼峰格式
         String upperCamelTableName = StringUtils.capitalize(StrUtil.toCamelCase(tableName));
         // 类名为大写的表名
         javaEntityGenerateDTO.setClassName(upperCamelTableName);
-        // 类注释为表注释 > 表名
+        // 类注释为 表注释 or 表名
         javaEntityGenerateDTO.setClassComment(Optional.ofNullable(tableComment).orElse(upperCamelTableName));
-        // 依次填充每一列
+        // 依次填充每一列，列名=>字段名
         List<FieldDTO> fieldDTOList = new ArrayList<>();
         for (Field field : tableSchema.getFieldList()) {
             FieldDTO fieldDTO = new FieldDTO();
@@ -69,8 +70,10 @@ public class JavaCodeBuilder {
             fieldDTOList.add(fieldDTO);
         }
         javaEntityGenerateDTO.setFieldList(fieldDTOList);
+        //创建一个字符流
         StringWriter stringWriter = new StringWriter();
         Template temp = configuration.getTemplate("java_entity.ftl");
+        //将类中的属性动态填充到template中，并且写入stringwriter中
         temp.process(javaEntityGenerateDTO, stringWriter);
         return stringWriter.toString();
     }
@@ -91,9 +94,9 @@ public class JavaCodeBuilder {
         JavaObjectGenerateDTO javaObjectGenerateDTO = new JavaObjectGenerateDTO();
         String tableName = tableSchema.getTableName();
         String camelTableName = StrUtil.toCamelCase(tableName);
-        // 类名为大写的表名
+        // 类名为首字母大写的表名
         javaObjectGenerateDTO.setClassName(StringUtils.capitalize(camelTableName));
-        // 变量名为表名
+        // 对象名为驼峰命名的表名
         javaObjectGenerateDTO.setObjectName(camelTableName);
         // 依次填充每一列
         Map<String, Object> fillData = dataList.get(0);

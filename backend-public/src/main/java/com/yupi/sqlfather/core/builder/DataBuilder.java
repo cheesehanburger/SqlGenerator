@@ -52,7 +52,9 @@ public class DataBuilder {
         for (Field field : fieldList) {
             MockTypeEnum mockTypeEnum = Optional.ofNullable(MockTypeEnum.getEnumByValue(field.getMockType()))
                     .orElse(MockTypeEnum.NONE);
+            // 根据模拟类型，创建对应的数据构造器
             DataGenerator dataGenerator = DataGeneratorFactory.getGenerator(mockTypeEnum);
+            // 使用数据构造器生成对应假数据
             List<String> mockDataList = dataGenerator.doGenerate(field, rowNum);
             String fieldName = field.getFieldName();
             // 填充结果列表

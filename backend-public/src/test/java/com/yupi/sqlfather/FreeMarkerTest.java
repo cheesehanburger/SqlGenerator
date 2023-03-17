@@ -46,6 +46,7 @@ public class FreeMarkerTest {
         StringWriter stringWriter = new StringWriter();
         Template temp = cfg.getTemplate("java_entity.ftl");
         temp.process(javaEntityGenerateDTO, stringWriter);
+        //System.out.println(stringWriter.toString());
         System.out.println(stringWriter);
     }
 }

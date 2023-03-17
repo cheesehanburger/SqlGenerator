@@ -19,6 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import javax.xml.transform.Source;
+
 /**
  * 集中数据生成器
  * 门面模式，统一生成
@@ -42,7 +44,7 @@ public class GeneratorFacade {
         // 构造建表 SQL
         String createSql = sqlBuilder.buildCreateTableSql(tableSchema);
         int mockNum = tableSchema.getMockNum();
-        // 生成模拟数据
+        // 生成模拟数据 [{username='han',address='jiangsu'},{username='zhao',address='nanjing'}]
         List<Map<String, Object>> dataList = DataBuilder.generateData(tableSchema, mockNum);
         // 生成插入 SQL
         String insertSql = sqlBuilder.buildInsertSql(tableSchema, dataList);

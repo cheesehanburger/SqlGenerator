@@ -178,9 +178,11 @@ public class SqlBuilder {
         int total = dataList.size();
         for (int i = 0; i < total; i++) {
             Map<String, Object> dataRow = dataList.get(i);
+            //字段名  ('name','address','class')
             String keyStr = fieldList.stream()
                     .map(field -> sqlDialect.wrapFieldName(field.getFieldName()))
                     .collect(Collectors.joining(", "));
+            //插入值  ('han','jiangsu','n1')
             String valueStr = fieldList.stream()
                     .map(field -> getValueStr(field, dataRow.get(field.getFieldName())))
                     .collect(Collectors.joining(", "));

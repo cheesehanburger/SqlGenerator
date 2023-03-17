@@ -17,10 +17,14 @@ public class FreeMarkerConfigurationConfig {
     @Bean
     public Configuration configuration() throws IOException {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_29);
+        // 模版加载目录
         cfg.setDirectoryForTemplateLoading(new File("src/main/resources/templates"));
+        // 模版默认编码
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+        //设置日志模版异常
         cfg.setLogTemplateExceptions(false);
+        //设置包裹未检查异常
         cfg.setWrapUncheckedExceptions(true);
         cfg.setFallbackOnNullLoopVariable(false);
         return cfg;

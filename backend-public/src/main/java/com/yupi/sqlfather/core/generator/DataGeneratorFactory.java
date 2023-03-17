@@ -34,6 +34,7 @@ public class DataGeneratorFactory {
      * @param mockTypeEnum
      * @return
      */
+    //根据模拟类型返回对应的生成器
     public static DataGenerator getGenerator(MockTypeEnum mockTypeEnum) {
         mockTypeEnum = Optional.ofNullable(mockTypeEnum).orElse(MockTypeEnum.NONE);
         return mockTypeDataGeneratorMap.get(mockTypeEnum);

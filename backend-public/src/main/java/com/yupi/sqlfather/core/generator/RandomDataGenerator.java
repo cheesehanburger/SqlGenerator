@@ -22,6 +22,7 @@ public class RandomDataGenerator implements DataGenerator {
             MockParamsRandomTypeEnum randomTypeEnum = Optional.ofNullable(
                             MockParamsRandomTypeEnum.getEnumByValue(mockParams))
                     .orElse(MockParamsRandomTypeEnum.STRING);
+            // 通过随机数生成工具返回模拟数据
             String randomString = FakerUtils.getRandomValue(randomTypeEnum);
             list.add(randomString);
         }

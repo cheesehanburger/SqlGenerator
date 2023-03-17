@@ -23,7 +23,7 @@ public class JsonBuilder {
      */
     public static String buildJson(List<Map<String, Object>> dataList) {
         Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
+                .setPrettyPrinting() //设置格式化打印
                 .create();
         return gson.toJson(dataList);
     }
