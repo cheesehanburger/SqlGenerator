@@ -22,10 +22,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Component
 @Slf4j
 public class LogInterceptor {
-
     /**
      * 执行拦截
      */
+    //拦截所有com.yupi.sqlfather.controller下的所有方法，也就是所有的接口都需要被拦截。
     @Around("execution(* com.yupi.sqlfather.controller.*.*(..))")
     public Object doInterceptor(ProceedingJoinPoint point) throws Throwable {
         // 计时

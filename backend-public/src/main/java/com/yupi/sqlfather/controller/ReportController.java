@@ -91,6 +91,7 @@ public class ReportController {
      * @param request
      * @return
      */
+    //删除举报信息（不是删除被举报的对象）
     @PostMapping("/delete")
     public BaseResponse<Boolean> deleteReport(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
         if (deleteRequest == null || deleteRequest.getId() <= 0) {
@@ -117,6 +118,7 @@ public class ReportController {
      * @param reportUpdateRequest
      * @return
      */
+    //更新举报信息
     @PostMapping("/update")
     @AuthCheck(mustRole = "admin")
     public BaseResponse<Boolean> updateReport(@RequestBody ReportUpdateRequest reportUpdateRequest) {
@@ -175,6 +177,7 @@ public class ReportController {
      * @param reportQueryRequest
      * @return
      */
+    //获取举报信息的列表
     @GetMapping("/list/page")
     public BaseResponse<Page<Report>> listReportByPage(ReportQueryRequest reportQueryRequest) {
         if (reportQueryRequest == null) {

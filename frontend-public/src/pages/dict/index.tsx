@@ -1,8 +1,8 @@
 import DictCard from '@/components/DictCard';
-import { listMyDictByPage } from '@/services/dictService';
+import { listMyAddDictByPage } from '@/services/dictService';
 import { PageContainer } from '@ant-design/pro-components';
-import { Col, message, Radio, RadioChangeEvent, Row } from 'antd';
-import React, { useState } from 'react';
+import { Col,message,Radio,RadioChangeEvent,Row } from 'antd';
+import React,{ useState } from 'react';
 import './index.less';
 
 /**
@@ -25,7 +25,8 @@ const IndexPage: React.FC = () => {
     setDataList: (dataList: DictType.Dict[]) => void,
     setTotal: (total: number) => void,
   ) => {
-    listMyDictByPage(searchParams)
+    // 原为：listMyDictByPage(searchParams)
+    listMyAddDictByPage(searchParams)
       .then((res) => {
         setDataList(res.data.records);
         setTotal(res.data.total);

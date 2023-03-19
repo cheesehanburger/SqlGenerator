@@ -169,6 +169,7 @@ public class DictController {
      * @param request
      * @return
      */
+    //加载公开词库
     @GetMapping("/list/page")
     public BaseResponse<Page<Dict>> listDictByPage(DictQueryRequest dictQueryRequest,
                                                    HttpServletRequest request) {
@@ -252,6 +253,7 @@ public class DictController {
      * @param request
      * @return
      */
+    //加载个人词库
     @GetMapping("/my/add/list/page")
     public BaseResponse<Page<Dict>> listMyAddDictByPage(DictQueryRequest dictQueryRequest,
                                                         HttpServletRequest request) {
