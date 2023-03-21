@@ -39,7 +39,7 @@ public class AuthInterceptor {
      * @param authCheck
      * @return
      */
-    //只有被标注了@authCheck的方法才会被拦截认证
+    // 只有被标注了@authCheck的方法才会被拦截认证是否有管理员权限
     @Around("@annotation(authCheck)")
     public Object doInterceptor(ProceedingJoinPoint joinPoint, AuthCheck authCheck) throws Throwable {
         List<String> anyRole = Arrays.stream(authCheck.anyRole()).filter(StringUtils::isNotBlank).collect(Collectors.toList());

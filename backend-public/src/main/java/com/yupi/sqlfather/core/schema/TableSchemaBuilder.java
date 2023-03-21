@@ -91,7 +91,7 @@ public class TableSchemaBuilder {
             //将所有能在库中匹配得到的Name或者fieldName，计入字段信息表infoList
             List<FieldInfo> infoList = Optional.ofNullable(nameFieldInfoMap.get(word)).orElse(fieldNameFieldInfoMap.get(word));
             if (CollectionUtils.isNotEmpty(infoList)) {
-                //将字段信息表的第一个字段信息（json形式）转化为类
+                // 匹配到的将字段信息表已有第一个字段的作为值
                 field = GSON.fromJson(infoList.get(0).getContent(), Field.class);
             } else {
                 // 未匹配到的使用默认值

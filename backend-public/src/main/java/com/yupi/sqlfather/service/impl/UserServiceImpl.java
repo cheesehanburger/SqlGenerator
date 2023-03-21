@@ -63,7 +63,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             if (count > 0) {
                 throw new BusinessException(ErrorCode.PARAMS_ERROR, "账号重复");
             }
-            // 2. 加密
+            // 2. 加密注册输入的密码
             String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
             // 3. 插入数据
             User user = new User();
@@ -71,6 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             user.setUserAccount(userAccount);
             user.setUserPassword(encryptPassword);
             user.setUserRole(userRole);
+            //4. 将注册用户信息存入数据库
             boolean saveResult = this.save(user);
             if (!saveResult) {
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");
@@ -92,10 +93,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (userPassword.length() < 8) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "密码错误");
         }
-        // 2. 加密
+        // 2. 加密登陆输入的密码
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
         // 查询用户是否存在
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        // 将账户和密码（同样盐值加密）与数据库中进行比对
         queryWrapper.eq("userAccount", userAccount);
         queryWrapper.eq("userPassword", encryptPassword);
         User user = userMapper.selectOne(queryWrapper);
@@ -104,7 +106,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             log.info("user login failed, userAccount cannot match userPassword");
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在或密码错误");
         }
-        // 3. 记录用户的登录态
+        // 3. 记录用户的登录态，将登陆信息存在
         request.getSession().setAttribute(USER_LOGIN_STATE, user);
         return user;
     }
