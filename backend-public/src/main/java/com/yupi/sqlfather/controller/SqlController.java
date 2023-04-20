@@ -1,7 +1,6 @@
 package com.yupi.sqlfather.controller;
 
 import com.alibaba.excel.EasyExcel;
-import com.google.gson.Gson;
 import com.yupi.sqlfather.common.BaseResponse;
 import com.yupi.sqlfather.common.ErrorCode;
 import com.yupi.sqlfather.common.ResultUtils;
@@ -13,22 +12,20 @@ import com.yupi.sqlfather.core.schema.TableSchemaBuilder;
 import com.yupi.sqlfather.exception.BusinessException;
 import com.yupi.sqlfather.model.dto.GenerateByAutoRequest;
 import com.yupi.sqlfather.model.dto.GenerateBySqlRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletResponse;
-
-import lombok.extern.slf4j.Slf4j;
-import net.datafaker.fileformats.Json;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * SQL 相关接口
@@ -40,7 +37,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 public class SqlController {
 
-    //可视化表单接口
+    //可视化表单接口一键生成接口
     @PostMapping("/generate/schema")
     public BaseResponse<GenerateVO> generateBySchema(@RequestBody TableSchema tableSchema) {
         return ResultUtils.success(GeneratorFacade.generateAll(tableSchema));

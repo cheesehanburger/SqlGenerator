@@ -8,9 +8,9 @@ import com.yupi.sqlfather.exception.BusinessException;
 import com.yupi.sqlfather.model.entity.Dict;
 import com.yupi.sqlfather.service.DictService;
 import com.yupi.sqlfather.utils.SpringContextUtils;
+import org.apache.commons.lang3.RandomUtils;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.lang3.RandomUtils;
 
 /**
  * 词库数据生成器

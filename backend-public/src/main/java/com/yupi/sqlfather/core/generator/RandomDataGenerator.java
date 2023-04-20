@@ -19,6 +19,7 @@ public class RandomDataGenerator implements DataGenerator {
         String mockParams = field.getMockParams();
         List<String> list = new ArrayList<>(rowNum);
         for (int i = 0; i < rowNum; i++) {
+            // 将模拟数据类型转化为枚举类
             MockParamsRandomTypeEnum randomTypeEnum = Optional.ofNullable(
                             MockParamsRandomTypeEnum.getEnumByValue(mockParams))
                     .orElse(MockParamsRandomTypeEnum.STRING);
