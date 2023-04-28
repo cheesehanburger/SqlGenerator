@@ -23,7 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 /**
  * 权限校验 AOP
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Aspect
 @Component

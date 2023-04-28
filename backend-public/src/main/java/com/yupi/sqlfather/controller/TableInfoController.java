@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 表信息接口
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @RestController
 @RequestMapping("/table_info")

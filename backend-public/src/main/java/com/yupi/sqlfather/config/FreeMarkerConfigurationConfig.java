@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * FreeMarker 模板配置
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @org.springframework.context.annotation.Configuration
 public class FreeMarkerConfigurationConfig {

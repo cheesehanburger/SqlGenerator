@@ -9,7 +9,7 @@ import java.util.Optional;
  * 数据生成器工厂
  * 工厂 + 单例模式，降低开销
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class DataGeneratorFactory {
 

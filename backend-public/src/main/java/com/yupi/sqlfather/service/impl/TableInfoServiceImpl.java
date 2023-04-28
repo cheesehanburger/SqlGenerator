@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
- * @author https://github.com/liyupili
+ * @author hanburgerli
  * @description 针对表【table_info】的数据库操作Service实现
  */
 @Service

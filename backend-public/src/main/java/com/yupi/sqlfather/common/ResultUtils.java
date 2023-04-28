@@ -3,7 +3,7 @@ package com.yupi.sqlfather.common;
 /**
  * 返回工具类
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class ResultUtils {
 

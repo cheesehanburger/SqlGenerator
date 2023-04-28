@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 /**
  * SQL 解析器测试
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class DruidParserTest {
 

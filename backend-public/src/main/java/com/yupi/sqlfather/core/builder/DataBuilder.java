@@ -30,7 +30,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 数据生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class DataBuilder {
 

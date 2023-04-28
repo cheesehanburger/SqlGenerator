@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 数据 JSON 生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Slf4j
 public class JsonBuilder {

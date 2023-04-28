@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * 随机值数据生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class RandomDataGenerator implements DataGenerator {
 

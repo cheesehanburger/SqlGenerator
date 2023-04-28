@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.yupi.sqlfather.model.entity.Report;
 
 /**
- * @author https://github.com/liyupili
+ * @author hanburgerli
  * @description 针对表【report(举报)】的数据库操作Service
  */
 public interface ReportService extends IService<Report> {

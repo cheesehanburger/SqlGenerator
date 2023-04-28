@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Typescript 类型生成封装类
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Data
 public class TypescriptTypeGenerateDTO {

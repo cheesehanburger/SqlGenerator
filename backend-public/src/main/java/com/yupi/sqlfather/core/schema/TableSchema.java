@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 表概要
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Data
 public class TableSchema {

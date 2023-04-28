@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
- * @author https://github.com/liyupili
+ * @author hanburgerli
  * @description 针对表【report(举报)】的数据库操作Service实现
  */
 @Service

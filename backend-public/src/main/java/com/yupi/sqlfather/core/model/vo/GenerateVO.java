@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 生成的返回值
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Data
 public class GenerateVO implements Serializable {

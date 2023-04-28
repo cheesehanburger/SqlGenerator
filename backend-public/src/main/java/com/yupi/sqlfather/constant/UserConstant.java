@@ -3,7 +3,7 @@ package com.yupi.sqlfather.constant;
 /**
  * 用户常量
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public interface UserConstant {
 

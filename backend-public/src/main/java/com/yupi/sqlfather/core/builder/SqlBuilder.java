@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
  * SQL 生成器
  * 支持方言，策略模式
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Slf4j
 public class SqlBuilder {

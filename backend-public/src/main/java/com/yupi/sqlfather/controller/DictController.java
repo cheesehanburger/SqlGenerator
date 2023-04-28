@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 /**
  * 词条接口
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @RestController
 @RequestMapping("/dict")

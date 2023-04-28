@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 字段信息接口
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @RestController
 @RequestMapping("/field_info")

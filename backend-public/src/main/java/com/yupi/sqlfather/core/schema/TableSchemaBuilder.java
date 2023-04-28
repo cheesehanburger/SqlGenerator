@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 /**
  * 表概要生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Component
 @Slf4j

@@ -16,7 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 /**
  * 请求响应日志 AOP
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  **/
 @Aspect
 @Component

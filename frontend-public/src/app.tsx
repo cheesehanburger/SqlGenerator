@@ -1,6 +1,5 @@
 // 全局运行时配置
 import Logo from '@/assets/logo.png';
-// import GlobalFooter from '@/components/GlobalFooter';
 import { getLoginUser } from '@/services/userService';
 import { RunTimeLayoutConfig } from '@@/plugin-layout/types';
 import type { RequestConfig } from 'umi';
@@ -39,7 +38,6 @@ export const layout: RunTimeLayoutConfig = () => {
       paddingBottom: 120,
     },
     rightContentRender: () => <RightContent />,
-    // footerRender: () => <GlobalFooter />,
   };
 };
 

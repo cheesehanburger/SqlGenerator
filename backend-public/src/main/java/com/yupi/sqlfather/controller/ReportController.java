@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 举报接口
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @RestController
 @RequestMapping("/report")

@@ -20,7 +20,7 @@ import org.springframework.util.DigestUtils;
 /**
  * 用户服务实现类
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Service
 @Slf4j

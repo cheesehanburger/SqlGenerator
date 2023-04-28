@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 数据生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public interface DataGenerator {
 

@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 模拟参数随机类型枚举
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public enum MockParamsRandomTypeEnum {
 

@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * SQL 方言工厂
  * 工厂 + 单例模式，降低开销
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class SQLDialectFactory {
 

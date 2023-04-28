@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 默认值数据生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class DefaultDataGenerator implements DataGenerator {
 

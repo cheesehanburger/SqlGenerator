@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 /**
  * Java 代码生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Component
 @Slf4j

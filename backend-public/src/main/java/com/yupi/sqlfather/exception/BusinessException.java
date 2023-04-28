@@ -5,7 +5,7 @@ import com.yupi.sqlfather.common.ErrorCode;
 /**
  * 自定义异常类
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class BusinessException extends RuntimeException {
 

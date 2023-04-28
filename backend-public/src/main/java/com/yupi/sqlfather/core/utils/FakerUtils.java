@@ -11,7 +11,7 @@ import org.apache.commons.lang3.RandomUtils;
 /**
  * 随机数生成工具
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class FakerUtils {
 

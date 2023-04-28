@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * 举报状态枚举
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public enum ReportStatusEnum {
 

@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 词库数据生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class DictDataGenerator implements DataGenerator {
 

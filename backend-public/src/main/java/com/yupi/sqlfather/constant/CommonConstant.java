@@ -3,7 +3,7 @@ package com.yupi.sqlfather.constant;
 /**
  * 通用常量
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public interface CommonConstant {
 

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * 词条审核状态枚举
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public enum ReviewStatusEnum {
 

@@ -3,7 +3,7 @@ package com.yupi.sqlfather.common;
 /**
  * 错误码
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public enum ErrorCode {
 

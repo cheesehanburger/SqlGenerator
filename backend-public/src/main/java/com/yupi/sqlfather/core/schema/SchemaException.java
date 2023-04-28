@@ -3,7 +3,7 @@ package com.yupi.sqlfather.core.schema;
 /**
  * SQL 相关异常
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class SchemaException extends RuntimeException {
 

@@ -3,7 +3,7 @@ package com.yupi.sqlfather.core.builder.sql;
 /**
  * SQL 方言
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public interface SQLDialect {
 

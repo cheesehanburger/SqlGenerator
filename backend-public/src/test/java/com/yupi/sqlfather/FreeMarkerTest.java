@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * FreeMarker 测试
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class FreeMarkerTest {
 

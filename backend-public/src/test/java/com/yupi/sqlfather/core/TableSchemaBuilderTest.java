@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * 表概要生成器测试
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 class TableSchemaBuilderTest {
 

@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 删除请求
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Data
 public class DeleteRequest implements Serializable {

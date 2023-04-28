@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.yupi.sqlfather.model.entity.FieldInfo;
 
 /**
- * @author https://github.com/liyupili
+ * @author hanburgerli
  * @description 针对表【field_info】的数据库操作Service
  */
 public interface FieldInfoService extends IService<FieldInfo> {

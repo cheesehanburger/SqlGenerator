@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 更新请求
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Data
 public class FieldInfoUpdateRequest implements Serializable {

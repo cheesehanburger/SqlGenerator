@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Java 对象生成封装类
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Data
 public class JavaObjectGenerateDTO {

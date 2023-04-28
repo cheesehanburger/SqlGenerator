@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author https://github.com/liyupili
+ * @author hanburgerli
  * @description 针对表【dict(词条)】的数据库操作Service实现
  */
 @Service

@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 固定值数据生成器
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 public class FixedDataGenerator implements DataGenerator {
 

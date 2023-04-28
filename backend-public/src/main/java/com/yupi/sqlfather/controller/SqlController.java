@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 /**
  * SQL 相关接口
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @RestController
 @RequestMapping("/sql")

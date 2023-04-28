@@ -25,7 +25,7 @@ import javax.xml.transform.Source;
  * 集中数据生成器
  * 门面模式，统一生成
  *
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 @Component
 @Slf4j
