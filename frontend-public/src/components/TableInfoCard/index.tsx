@@ -1,8 +1,8 @@
 import TableInfoList from '@/components/TableInfoList';
 import { listTableInfoByPage } from '@/services/tableInfoService';
-import { Link, useModel } from '@umijs/max';
-import { Button, Card, Empty, Input, message, Space } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { Link,useModel } from '@umijs/max';
+import { Button,Card,Empty,Input,message,Space } from 'antd';
+import React,{ useEffect,useState } from 'react';
 import './index.less';
 
 // 默认分页大小
