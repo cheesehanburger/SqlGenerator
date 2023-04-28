@@ -1,15 +1,15 @@
 import DictCard from '@/components/DictCard';
 import { listMyAddDictByPage } from '@/services/dictService';
 import { PageContainer } from '@ant-design/pro-components';
-import { Col,message,Radio,RadioChangeEvent,Row } from 'antd';
-import React,{ useState } from 'react';
+import { Col, message, Radio, RadioChangeEvent, Row } from 'antd';
+import React, { useState } from 'react';
 import './index.less';
 
 /**
  * 主页
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const IndexPage: React.FC = () => {
   const [layout, setLayout] = useState('half');

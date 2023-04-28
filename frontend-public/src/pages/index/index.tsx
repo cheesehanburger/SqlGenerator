@@ -29,7 +29,7 @@ import './index.less';
  * 主页
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const IndexPage: React.FC = () => {
   const [result, setResult] = useState<GenerateVO>();

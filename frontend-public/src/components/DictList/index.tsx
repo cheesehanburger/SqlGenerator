@@ -29,7 +29,7 @@ interface Props {
  * 词库列表
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const DictList: React.FC<Props> = (props) => {
   const { dataList, pagination, loading, showTag = true } = props;

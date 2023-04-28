@@ -14,7 +14,7 @@ interface Props {
  * 导入表抽屉
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const ImportTableDrawer: React.FC<Props> = (props) => {
   const { visible, onImport, onClose } = props;

@@ -24,7 +24,7 @@ interface Props {
  * 生成结果卡片
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const GenerateResultCard: React.FC<Props> = (props) => {
   const { result, loading = false, showCard = true } = props;

@@ -24,10 +24,16 @@ interface Props {
  * 表信息卡片
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const TableInfoCard: React.FC<Props> = (props) => {
-  const { title = '表信息列表', needLogin = false, showTag = true, onLoad, onImport } = props;
+  const {
+    title = '表信息列表',
+    needLogin = false,
+    showTag = true,
+    onLoad,
+    onImport,
+  } = props;
 
   // 公开数据
   const [dataList, setDataList] = useState<TableInfoType.TableInfo[]>([]);
@@ -92,8 +98,8 @@ const TableInfoCard: React.FC<Props> = (props) => {
           <>
             <Space>
               <Input.Search
-                placeholder='请输入名称'
-                enterButton='搜索'
+                placeholder="请输入名称"
+                enterButton="搜索"
                 onSearch={(value) => {
                   setSearchParams({
                     ...initSearchParams,

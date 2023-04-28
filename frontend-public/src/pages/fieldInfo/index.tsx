@@ -9,7 +9,7 @@ import './index.less';
  * 字段信息页
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const FieldInfoPage: React.FC = () => {
   const [layout, setLayout] = useState('half');

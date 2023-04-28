@@ -24,7 +24,7 @@ interface Props {
  * 词库卡片
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const DictCard: React.FC<Props> = (props) => {
   const {

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yupi.sqlfather.mapper.TableInfoMapper">
+<mapper namespace="com.hanburger.sqlfather.mapper.TableInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.yupi.sqlfather.model.entity.TableInfo">
+    <resultMap id="BaseResultMap" type="com.hanburger.sqlfather.model.entity.TableInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="content" column="content" jdbcType="VARCHAR"/>

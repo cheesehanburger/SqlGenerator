@@ -10,7 +10,7 @@ import './index.less';
  * 表信息页
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const TableInfoPage: React.FC = () => {
   const [layout, setLayout] = useState('half');
@@ -55,18 +55,6 @@ const TableInfoPage: React.FC = () => {
     <div className="table-info">
       <PageContainer
         title="站在巨人的肩膀上，一键导入表并生成模拟数据！"
-        // title={
-        //   <>
-        //     站在巨人的肩膀上，一键导入表并生成模拟数据！
-        //     <a
-        //       href="https://www.bilibili.com/video/BV1eP411N7B7/"
-        //       target="_blank"
-        //       rel="noreferrer"
-        //     >
-        //       查看视频教程
-        //     </a>
-        //   </>
-        // }
         extra={
           <div style={{ marginLeft: 0 }}>
             切换布局：

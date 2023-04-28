@@ -24,10 +24,16 @@ interface Props {
  * 表信息卡片
  *
  * @constructor
- * @author https://github.com/liyupi
+ * @author hanburger
  */
 const FieldInfoCard: React.FC<Props> = (props) => {
-  const { title = '字段信息列表', needLogin = false, showTag = true, onLoad, onImport } = props;
+  const {
+    title = '字段信息列表',
+    needLogin = false,
+    showTag = true,
+    onLoad,
+    onImport,
+  } = props;
 
   // 公开数据
   const [dataList, setDataList] = useState<FieldInfoType.FieldInfo[]>([]);
