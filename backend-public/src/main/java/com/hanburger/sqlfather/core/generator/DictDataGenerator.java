@@ -32,10 +32,12 @@ public class DictDataGenerator implements DataGenerator {
         if (dict == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "词库不存在");
         }
+        //将dict表中json字符串类型的词库内容，转化为list<string>类型
         List<String> wordList = GSON.fromJson(dict.getContent(),
                 new TypeToken<List<String>>() {
                 }.getType());
         List<String> list = new ArrayList<>(rowNum);
+        //从词库中随机获取词填充入模拟数据
         for (int i = 0; i < rowNum; i++) {
             String randomStr = wordList.get(RandomUtils.nextInt(0, wordList.size()));
             list.add(randomStr);

@@ -88,7 +88,7 @@ public class TableSchemaBuilder {
         //将所有智能输入的字段进行比对
         for (String word : words) {
             Field field;
-            //将所有能在库中匹配得到的Name或者fieldName，计入字段信息表infoList
+            //将所有能在库中匹配得到的Name或者fieldName的字段信息，计入字段信息表infoList
             List<FieldInfo> infoList = Optional.ofNullable(nameFieldInfoMap.get(word)).orElse(fieldNameFieldInfoMap.get(word));
             if (CollectionUtils.isNotEmpty(infoList)) {
                 // 匹配到的将字段信息表已有第一个字段的作为值
@@ -133,42 +133,52 @@ public class TableSchemaBuilder {
             // 解析列
             for (SQLTableElement sqlTableElement : sqlCreateTableStatement.getTableElementList()) {
 
-                // 主键约束
+                // 主键字段,如果从SQL解析字段为pk，则在schema中对应的field的primarykey设置为ture（未起作用）
                 if (sqlTableElement instanceof SQLPrimaryKey) {
                     SQLPrimaryKey sqlPrimaryKey = (SQLPrimaryKey) sqlTableElement;
-                    String primaryFieldName = sqlDialect.parseFieldName(sqlPrimaryKey.getColumns().get(0).toString());
+                    String primaryFieldName = sqlDialect.parseFieldName(sqlPrimaryKey.getColumns().get(0).toString()); // 从sql中获取主键名称，'id' => id
+
                     fieldList.forEach(field -> {
                         if (field.getFieldName().equals(primaryFieldName)) {
                             field.setPrimaryKey(true);
                         }
                     });
                 } else if (sqlTableElement instanceof SQLColumnDefinition) {
-                    // 列
+                    // 非主键字段进行字段信息设置
                     SQLColumnDefinition columnDefinition = (SQLColumnDefinition) sqlTableElement;
                     Field field = new Field();
+                    //设置字段名
                     field.setFieldName(sqlDialect.parseFieldName(columnDefinition.getNameAsString()));
+                    //设置字段类型
                     field.setFieldType(columnDefinition.getDataType().toString());
+                    //设置字段默认值
                     String defaultValue = null;
                     if (columnDefinition.getDefaultExpr() != null) {
                         defaultValue = columnDefinition.getDefaultExpr().toString();
                     }
                     field.setDefaultValue(defaultValue);
+                    //设置字段是否为空
                     field.setNotNull(columnDefinition.containsNotNullConstaint());
+                    //设置字段注释
                     String comment = null;
                     if (columnDefinition.getComment() != null) {
                         comment = columnDefinition.getComment().toString();
                         if (comment.length() > 2) {
-                            comment = comment.substring(1, comment.length() - 1);
+                            comment = comment.substring(1, comment.length() - 1);  //注释信息去除头尾的""
                         }
                     }
                     field.setComment(comment);
+                    //设置字段是否为主键
                     field.setPrimaryKey(columnDefinition.isPrimaryKey());
+                    //设置字段是否自增
                     field.setAutoIncrement(columnDefinition.isAutoIncrement());
+                    //设置字段的更新事件
                     String onUpdate = null;
                     if (columnDefinition.getOnUpdate() != null) {
                         onUpdate = columnDefinition.getOnUpdate().toString();
                     }
                     field.setOnUpdate(onUpdate);
+                    //设置字段模拟数据类型，默认为不模拟
                     field.setMockType(MockTypeEnum.NONE.getValue());
                     fieldList.add(field);
                 }
@@ -189,13 +199,14 @@ public class TableSchemaBuilder {
      */
     public static TableSchema buildFromExcel(MultipartFile file) {
         try {
-            //将excle数据转为[{0=value,1=value},{0=value,1=value}]类型的list
+            //通过EasyExcel将excle数据转为[{0=title1,1=title},{0=value,1=value}]类型的list
             List<Map<Integer, String>> dataList = EasyExcel.read(file.getInputStream()).sheet().headRowNumber(0).doReadSync();
             if (CollectionUtils.isEmpty(dataList)) {
                 throw new BusinessException(ErrorCode.PARAMS_ERROR, "表格无数据");
             }
-            // 第一行为表头
+            // 第一行元素为表头
             Map<Integer, String> titleMap = dataList.get(0);
+            //将表头解析为[field1,field2，field3]格式
             List<Field> fieldList = titleMap.values().stream().map(name -> {
                 Field field = new Field();
                 field.setFieldName(name);
@@ -203,12 +214,12 @@ public class TableSchemaBuilder {
                 field.setFieldType(FieldTypeEnum.TEXT.getValue());
                 return field;
             }).collect(Collectors.toList());
-            // 第二行为值
+            // 第二行元素为值
             if (dataList.size() > 1) {
                 Map<Integer, String> dataMap = dataList.get(1);
+                //根据第二行元素，解析每一列数据的的格式
                 for (int i = 0; i < fieldList.size(); i++) {
                     String value = dataMap.get(i);
-                    // 根据值判断类型
                     String fieldType = getFieldTypeByValue(value);
                     fieldList.get(i).setFieldType(fieldType);
                 }

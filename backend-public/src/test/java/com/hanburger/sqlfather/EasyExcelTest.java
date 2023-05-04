@@ -2,6 +2,8 @@ package com.hanburger.sqlfather;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.support.ExcelTypeEnum;
+import com.hanburger.sqlfather.core.model.enums.FieldTypeEnum;
+import com.hanburger.sqlfather.core.schema.TableSchema;
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +31,14 @@ public class EasyExcelTest {
                 .sheet()
                 .headRowNumber(0)
                 .doReadSync();
-        System.out.println(list);
+        Map<Integer, String> titleMap = list.get(0);
+        List<TableSchema.Field> fieldList = titleMap.values().stream().map(name -> {
+            TableSchema.Field field = new TableSchema.Field();
+            field.setFieldName(name);
+            field.setComment(name);
+            field.setFieldType(FieldTypeEnum.TEXT.getValue());
+            return field;
+        }).collect(Collectors.toList());
+        System.out.println(fieldList);
     }
 }
