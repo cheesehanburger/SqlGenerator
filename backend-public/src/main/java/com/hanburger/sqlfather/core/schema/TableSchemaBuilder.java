@@ -206,7 +206,7 @@ public class TableSchemaBuilder {
             }
             // 第一行元素为表头
             Map<Integer, String> titleMap = dataList.get(0);
-            //将表头解析为[field1,field2，field3]格式
+            //将表头解析为字段，为[field1,field2，field3]格式
             List<Field> fieldList = titleMap.values().stream().map(name -> {
                 Field field = new Field();
                 field.setFieldName(name);
@@ -221,6 +221,7 @@ public class TableSchemaBuilder {
                 for (int i = 0; i < fieldList.size(); i++) {
                     String value = dataMap.get(i);
                     String fieldType = getFieldTypeByValue(value);
+                    //将解析出的数据格式设置到对应的字段中
                     fieldList.get(i).setFieldType(fieldType);
                 }
             }

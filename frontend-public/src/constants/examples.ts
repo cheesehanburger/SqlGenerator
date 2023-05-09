@@ -8,9 +8,18 @@ export const AUTO_INPUT_EXAMPLE = "id，用户名，创建时间，更新时间�
  */
 export const JSON_INPUT_EXAMPLE = {
     dbName: 'auto_db',
-    tableName: 'user',
+    tableName: 'users_tbl',
     tableComment: '用户表',
     fieldList: [
+        {
+            fieldName: 'id',
+            comment: '主键',
+            fieldType: 'bigint',
+            mockType: '不模拟',
+            notNull: true,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         {
             fieldName: 'username',
             comment: '用户名',
@@ -22,20 +31,11 @@ export const JSON_INPUT_EXAMPLE = {
             autoIncrement: false,
         },
         {
-            fieldName: 'id',
-            comment: '主键',
-            fieldType: 'bigint',
-            mockType: '固定',
-            notNull: true,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        {
             fieldName: 'create_time',
             comment: '创建时间',
             defaultValue: 'CURRENT_TIMESTAMP',
             fieldType: 'datetime',
-            mockType: '固定',
+            mockType: '不模拟',
             notNull: true,
             primaryKey: false,
             autoIncrement: false,
@@ -45,7 +45,7 @@ export const JSON_INPUT_EXAMPLE = {
             comment: '更新时间',
             defaultValue: 'CURRENT_TIMESTAMP',
             fieldType: 'datetime',
-            mockType: '固定',
+            mockType: '不模拟',
             notNull: true,
             primaryKey: false,
             autoIncrement: false,
@@ -56,7 +56,7 @@ export const JSON_INPUT_EXAMPLE = {
             comment: '是否删除(0-未删, 1-已删)',
             defaultValue: '0',
             fieldType: 'tinyint',
-            mockType: '固定',
+            mockType: '不模拟',
             notNull: true,
             primaryKey: false,
             autoIncrement: false,
@@ -69,7 +69,7 @@ export const JSON_INPUT_EXAMPLE = {
  */
 export const SQL_INPUT_EXAMPLE =
     '-- 用户表\n' +
-    'create table if not exists auto_db.user\n' +
+    'create table if not exists auto_db.users_tbl\n' +
     '(\n' +
     "id bigint not null auto_increment comment '主键' primary key,\n" +
     "username varchar(256) not null comment '用户名',\n" +

@@ -40,7 +40,7 @@ public class DataBuilder {
                     .orElse(MockTypeEnum.NONE);
             // 根据模拟类型，创建对应的数据构造器
             DataGenerator dataGenerator = DataGeneratorFactory.getGenerator(mockTypeEnum);
-            // 使用数据构造器生成对应假数据
+            // 使用数据构造器生成对应模拟数据
             List<String> mockDataList = dataGenerator.doGenerate(field, rowNum);
             String fieldName = field.getFieldName();
             // 填充结果列表
