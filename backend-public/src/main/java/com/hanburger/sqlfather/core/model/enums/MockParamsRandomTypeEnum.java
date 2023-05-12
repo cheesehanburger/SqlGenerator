@@ -41,7 +41,7 @@ public enum MockParamsRandomTypeEnum {
     }
 
     /**
-     * 根据 value 获取枚举
+     * 根据 value 获取随机类型枚举
      *
      * @param value
      * @return

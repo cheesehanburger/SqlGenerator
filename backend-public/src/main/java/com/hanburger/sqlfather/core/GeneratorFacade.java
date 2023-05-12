@@ -40,7 +40,7 @@ public class GeneratorFacade {
         // 构造建表 SQL
         String createSql = sqlBuilder.buildCreateTableSql(tableSchema);
         int mockNum = tableSchema.getMockNum();
-        // 生成模拟数据 [{username='han',address='jiangsu'},{username='zhao',address='nanjing'}]
+        // 生成模拟数据 [{id = 1,name = "han", address = "jiangsu"},{id = 2, name = "zhao", address = "zhejiang"}]
         List<Map<String, Object>> dataList = DataBuilder.generateData(tableSchema, mockNum);
         // 生成插入 SQL
         String insertSql = sqlBuilder.buildInsertSql(tableSchema, dataList);

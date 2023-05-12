@@ -91,15 +91,16 @@ public class SqlController {
             String fileName = URLEncoder.encode(tableName + "表数据", "UTF-8").replaceAll("\\+", "%20");
             response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
             response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
-            // 设置表头
+            // 设置表头 [[id], [username], [create_time], [update_time], [is_deleted]]
             List<List<String>> headList = new ArrayList<>();
             for (TableSchema.Field field : tableSchema.getFieldList()) {
                 List<String> head = Collections.singletonList(field.getFieldName());
                 headList.add(head);
             }
+            // [id, username, create_time, update_time, is_deleted]
             List<String> fieldNameList = tableSchema.getFieldList().stream()
                     .map(TableSchema.Field::getFieldName).collect(Collectors.toList());
-            // 设置数据
+            // 设置数据 [[1, 许文轩, 2023-03-16 15:29:34, 2023-03-16 15:29:34, 0], [2, 陈鹏飞, 2023-03-16 15:29:34, 2023-03-16 15:29:34, 0]]
             List<List<Object>> dataList = new ArrayList<>();
             for (Map<String, Object> data : generateVO.getDataList()) {
                 List<Object> dataRow = fieldNameList.stream().map(data::get).collect(Collectors.toList());

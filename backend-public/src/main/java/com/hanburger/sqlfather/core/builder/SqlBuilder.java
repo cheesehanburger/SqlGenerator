@@ -69,11 +69,12 @@ public class SqlBuilder {
             // dbName.tableName格式
             tableName = String.format("%s.%s", dbName, tableName);
         }
-        // 构造表前缀注释
+        //获取表注释
         String tableComment = tableSchema.getTableComment();
         if (StringUtils.isBlank(tableComment)) {
             tableComment = tableName;
         }
+        // 构造表前缀注释
         String tablePrefixComment = String.format("-- %s", tableComment);
         // 构造表后缀注释
         String tableSuffixComment = String.format("comment '%s'", tableComment);

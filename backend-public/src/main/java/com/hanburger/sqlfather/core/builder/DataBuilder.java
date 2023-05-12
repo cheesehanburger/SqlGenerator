@@ -36,20 +36,21 @@ public class DataBuilder {
         }
         // 依次生成每一列
         for (Field field : fieldList) {
+            // 获取字段需要模拟的数据类型
             MockTypeEnum mockTypeEnum = Optional.ofNullable(MockTypeEnum.getEnumByValue(field.getMockType()))
                     .orElse(MockTypeEnum.NONE);
             // 根据模拟类型，创建对应的数据构造器
             DataGenerator dataGenerator = DataGeneratorFactory.getGenerator(mockTypeEnum);
-            // 使用数据构造器生成对应模拟数据
+            // 使用数据构造器生成对应模拟数据集合
             List<String> mockDataList = dataGenerator.doGenerate(field, rowNum);
             String fieldName = field.getFieldName();
-            // 填充结果列表
+            // 以字段名为键，模拟数据为值，填充结果列表
             if (CollectionUtils.isNotEmpty(mockDataList)) {
                 for (int i = 0; i < rowNum; i++) {
                     resultList.get(i).put(fieldName, mockDataList.get(i));
                 }
             }
         }
-        return resultList;
+        return resultList;   // [{id = 1,name = "han", address = "jiangsu"},{id = 2, name = "zhao", address = "zhejiang"}]
     }
 }

@@ -235,7 +235,7 @@ public class TableSchemaBuilder {
     }
 
     /**
-     * 判断字段类型
+     * 根据 value 获取字段类型枚举
      *
      * @param value
      * @return
